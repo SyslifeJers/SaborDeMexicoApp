@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SaborDeMexico.Views.CarritoPage"
+             xmlns:magic="http://magic.com/schemas/gradients"
+                          xmlns:model="clr-namespace:SaborDeMexico.Models"  
+              xmlns:local="clr-namespace:SaborDeMexico.ViewModels"  
+             Title="Mi Carrito"
+             >
+
+    <ContentPage.Content>
+
+        <ScrollView>
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"  ></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+
+
+                </Grid.RowDefinitions>
+                <Grid Grid.RowSpan="6" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" ></RowDefinition>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" ></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+                    <magic:GradientView Grid.Column="0" Grid.Row="0">
+                        <magic:CssGradientSource>
+                            <x:String>
+                                <![CDATA[
+repeating-linear-gradient(333deg, hsla(119,47%,93%,0.05) 0px, hsla(119,47%,93%,0.05) 1px,transparent 1px, transparent 11px,hsla(119,47%,93%,0.05) 11px, hsla(119,47%,93%,0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(45deg, hsla(119,47%,93%,0.05) 0px, hsla(119,47%,93%,0.05) 1px,transparent 1px, transparent 11px,hsla(119,47%,93%,0.05) 11px, hsla(119,47%,93%,0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(135deg, hsla(119,47%,93%,0.05) 0px, hsla(119,47%,93%,0.05) 1px,transparent 1px, transparent 11px,hsla(119,47%,93%,0.05) 11px, hsla(119,47%,93%,0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(0deg, hsla(119,47%,93%,0.05) 0px, hsla(119,47%,93%,0.05) 1px,transparent 1px, transparent 11px,hsla(119,47%,93%,0.05) 11px, hsla(119,47%,93%,0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(90deg, hsla(119,47%,93%,0.05) 0px, hsla(119,47%,93%,0.05) 1px,transparent 1px, transparent 11px,hsla(119,47%,93%,0.05) 11px, hsla(119,47%,93%,0.05) 12px,transparent 12px, transparent 32px),linear-gradient(90deg, rgb(130, 26, 221),rgb(63, 178, 202))         ]]>
+                            </x:String>
+                        </magic:CssGradientSource>
+                    </magic:GradientView>
+                </Grid>
+                <StackLayout BackgroundColor="Transparent" Grid.Row="0" VerticalOptions="Start" HorizontalOptions="Center">
+
+                    <Grid HorizontalOptions="Center" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80" ></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="45"></RowDefinition>
+
+
+                        </Grid.RowDefinitions>
+                        <magic:GradientView Margin="10,60,10,10" Grid.RowSpan="3" >
+                            <magic:GradientView.Mask>
+                                <magic:RectangleMask Size="95%" Corners="10,10,10,10" />
+                            </magic:GradientView.Mask>
+                            <magic:CssGradientSource>
+                                <x:String>
+                                    <![CDATA[
+                repeating-linear-gradient(135deg, hsla(35,0%,71%,0.09) 0px, hsla(35,0%,71%,0.09) 1px,transparent 1px, transparent 11px),repeating-linear-gradient(45deg, hsla(35,0%,71%,0.09) 0px, hsla(35,0%,71%,0.09) 1px,transparent 1px, transparent 11px),linear-gradient(90deg, hsl(183,0%,100%),hsl(183,0%,100%)
+            ]]>
+                                </x:String>
+                            </magic:CssGradientSource>
+                        </magic:GradientView>
+                        <Label Grid.Row="1" Text="{Binding Total, StringFormat='$ {0}'}" HorizontalOptions="Center" Margin="0,20,0,0"/>
+                        <Label Grid.Row="2" Text="{Binding Fecha}" HorizontalOptions="Center" />
+                        <Frame CornerRadius="10"  Grid.Row="0" Grid.RowSpan="1" TranslationY="10"
+           HeightRequest="70"
+           WidthRequest="70"
+           HorizontalOptions="Center"
+           Padding="0"
+           IsClippedToBounds="True">
+                            <Image Grid.Row="0" Grid.RowSpan="2" Source="LogoS" HorizontalOptions="Center" TranslationY="0" HeightRequest="70" WidthRequest="70"/>
+                        </Frame>
+                    </Grid>
+
+                </StackLayout>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" ></RowDefinition>
+                        <RowDefinition Height="250"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20" ></ColumnDefinition>
+                        <ColumnDefinition Width="auto" ></ColumnDefinition>
+                        <ColumnDefinition Width="20" ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.RowSpan="2" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" ></RowDefinition>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" ></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+                        <magic:GradientView Grid.Column="0" Grid.Row="0" Margin="20,0,20,5">
+                            <magic:GradientView.Mask>
+                                <magic:RectangleMask Size="100%" Corners="10,10,10,10" />
+                            </magic:GradientView.Mask>
+                            <magic:CssGradientSource>
+                                <x:String>
+                                    <![CDATA[
+               repeating-linear-gradient(135deg, hsla(35,0%,71%,0.09) 0px, hsla(35,0%,71%,0.09) 1px,transparent 1px, transparent 11px),repeating-linear-gradient(45deg, hsla(35,0%,71%,0.09) 0px, hsla(35,0%,71%,0.09) 1px,transparent 1px, transparent 11px),linear-gradient(90deg, hsl(183,0%,100%),hsl(183,0%,100%)
+            ]]>
+                                </x:String>
+                            </magic:CssGradientSource>
+                        </magic:GradientView>
+                    </Grid>
+                    <Label Grid.Row="0" Margin="15,15,15,0" Grid.Column="1" Text="Da click sobre un producto para borrarlo" VerticalOptions="End" FontAttributes="Bold"></Label>
+
+                    <RefreshView Grid.Row="1" Margin="10,0,10,5" Grid.Column="1" x:DataType="local:CarritoViewModel" Command="{Binding ComandRefreshItems}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+
+                        <CollectionView  x:Name="List"
+                ItemsSource="{Binding ListCarritos}"
+                SelectionMode="None">
+                            <CollectionView.ItemTemplate >
+                                <DataTemplate>
+                                    <StackLayout  Padding="10" x:DataType="model:ModelCarrito">
+
+
+                                        <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
+           
+                                            <Label Text="{Binding NameProduct}" 
+                            LineBreakMode="CharacterWrap" 
+                           
+                            FontSize="16" />
+                                            <Label Text="Cant" FontSize="16"></Label>
+                                            <Label Text="{Binding Cantidad}"  
+                            LineBreakMode="CharacterWrap" 
+                           
+                            FontSize="16" />
+
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:CarritoViewModel}}, Path=ItemTapped}"		
+                                CommandParameter="{Binding .}">
+                                                   
+                                                </TapGestureRecognizer>
+                                            </StackLayout.GestureRecognizers>
+
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
+                                            <Label Text="Costo" FontSize="16"></Label>
+                                            <Label Text="{Binding Costo}" 
+                            LineBreakMode="CharacterWrap" 
+                           
+ ></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </RefreshView>
+
+                </Grid>
+                <Frame Grid.Row="2" Margin="20,0,20,0" HeightRequest="113" CornerRadius="10">
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Método de pago" TextColor="Silver" FontSize="14" CharacterSpacing="2"/>
+                        <Label Grid.Row="1" Grid.Column="0" Text="Transferencia" Padding="0,0,15,0" FontSize="16" FontAttributes="Bold" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Calle, StringFormat='Dirección: {0}'} " FontSize="13" LineBreakMode="CharacterWrap"/>
+
+                    </Grid>
+                </Frame>
+                <Grid Grid.Row="3" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <magic:GradientView Margin="10,0,10,0" Grid.RowSpan="3" >
+                        <magic:GradientView.Mask>
+                            <magic:RectangleMask Size="95%" Corners="10,10,10,10" />
+                        </magic:GradientView.Mask>
+                        <magic:CssGradientSource>
+                            <x:String>
+                                <![CDATA[
+                repeating-linear-gradient(135deg, hsla(35,0%,71%,0.09) 0px, hsla(35,0%,71%,0.09) 1px,transparent 1px, transparent 11px),repeating-linear-gradient(45deg, hsla(35,0%,71%,0.09) 0px, hsla(35,0%,71%,0.09) 1px,transparent 1px, transparent 11px),linear-gradient(90deg, hsl(183,0%,100%),hsl(183,0%,100%)
+            ]]>
+                            </x:String>
+                        </magic:CssGradientSource>
+                    </magic:GradientView>
+
+                    <Label Grid.Row="1" Margin="30,0,0,5" FontSize="16" VerticalOptions="Center" Text="{Binding CostoEnvio, StringFormat='Costo de envío: ${0}'} "></Label>
+                    <Label Grid.Row="2" Margin="30,0,0,10" FontSize="16" VerticalOptions="Start" Text="{Binding Total, StringFormat='Total: $ {0}'}"></Label>
+                    <Label Grid.Row="3" Margin="30,0,0,10" FontSize="16" TextColor="DarkRed" VerticalOptions="Start" Text="{Binding Error}"></Label>
+
+                </Grid>
+                <Label Grid.Row="4" HorizontalTextAlignment="Center" Margin="20,10,20,0" >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="¿Tiene algún problema con esta orden?" FontSize="15" FontAttributes="Bold" TextColor="Silver"/>
+                            <Span Text=" solicitar ayuda" TextColor="White" FontAttributes="Bold" FontSize="15">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ClickCommand}"
+                                          CommandParameter="https://wa.me/525624727621"
+                                          />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Grid Grid.Row="5" ColumnDefinitions="*,*" Padding="15">
+                    <Label Text="{Binding Error}" FontSize="16" TextColor="Black"></Label>
+                    <Button Grid.Column="0"  Command="{Binding BackCarrito}" ImageSource="Arrow" Text="Cancelar" TextColor="Black" FontAttributes="Bold" BackgroundColor="#e4e4e4" CornerRadius="10" HeightRequest="50" Margin="10,5,10,20"/>
+                    <Button Grid.Column="1" Command="{Binding ComandGoViewOrden}" Text="Pagar" TextColor="White" FontAttributes="Bold" BackgroundColor="Black" CornerRadius="10" Margin="5,5,10,20" HeightRequest="50"/>
+                </Grid>
+
+            </Grid>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

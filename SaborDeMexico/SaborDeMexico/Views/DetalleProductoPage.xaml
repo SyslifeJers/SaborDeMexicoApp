@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:SaborDeMexico.ViewModels" xmlns:model="clr-namespace:SaborDeMexico.Models"
+             x:Class="SaborDeMexico.Views.DetalleProductoPage">
+
+    <ContentPage.BindingContext>
+        <vm:DetalleDeProductoViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <StackLayout>
+            <StackLayout Margin="15" >
+                <Frame CornerRadius="50" 
+           HeightRequest="250"
+           WidthRequest="250"
+           HorizontalOptions="Center"
+           Padding="0"
+           IsClippedToBounds="True">
+                    <Image Aspect="AspectFill" Source="{Binding Imagen}"></Image>
+                </Frame>
+            </StackLayout>
+            <StackLayout Padding="15">
+                <Label Text="{Binding Nombre}"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand"
+                       FontSize="24"
+                       FontAttributes="Bold"/>
+                <Label Text="{Binding Descripci}"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand"
+                       FontSize="18"/>
+                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start" Orientation="Horizontal">
+                    <Label Text="Costo: $"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand"
+                       FontSize="18"/>
+                    <Label Text="{Binding Costo}"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand"
+                       FontSize="18"
+                           FontAttributes="Bold"/>
+                </StackLayout>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical" Margin="15,0,0,0" HorizontalOptions="StartAndExpand">
+                    <Label Text="Presentación:"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start"
+                       FontSize="18"
+                           FontAttributes="Bold"/>
+                    <Picker ItemsSource="{Binding GetProductos}"
+        ItemDisplayBinding="{Binding Precentacion}"
+                        HorizontalOptions="Center" WidthRequest="120"
+                        SelectedItem="{Binding SelectedCity}"	
+                                >
+
+                    </Picker>
+                </StackLayout>
+                <StackLayout HorizontalOptions="End" Margin="0,0,15,0">
+                    <Label Text="Cantidad:"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand"
+                       FontSize="18"
+                           FontAttributes="Bold"/>
+                    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+
+
+                        <Button FontSize="16" TextColor="Gray" BorderColor="Gray" HorizontalOptions="End" BorderWidth="1" WidthRequest="50" HeightRequest="50" BackgroundColor="Transparent" Text="-" Command="{Binding ComBajar}" x:Name="btnmenos" ></Button>
+
+                        <Label x:Name="entryCantidad"  WidthRequest="40" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="20" Text="{Binding Cant}" FontAttributes="Bold"  TextColor="ForestGreen"/>
+                        <Button FontSize="16" TextColor="Gray" BorderColor="Gray" HorizontalOptions="Start" BorderWidth="1" WidthRequest="50" HeightRequest="50" BackgroundColor="Transparent" Text="+" Command="{Binding ComSubir}" x:Name="btnmas"></Button>
+
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Margin="8,0,20,0" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+
+                <Label Text="Subtotal: $"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand"
+                       FontSize="18"/>
+                <Label Text="{Binding Total}"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand"
+                       FontSize="18"
+                           FontAttributes="Bold"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                <Button HorizontalOptions="CenterAndExpand" Command="{Binding ComBack}" Margin="0,10,10,14" HeightRequest="40" Text="Regresar" TextColor="White" CornerRadius="20" BorderWidth="1"  x:Name="btnCancelar"   BackgroundColor="Gray" WidthRequest="130"></Button>
+                <Button HorizontalOptions="CenterAndExpand"  Margin="0,10,0,14" HeightRequest="40" Text="Agregar al carrito" TextColor="White" CornerRadius="20" BorderWidth="1"  x:Name="btnSolicitar" Command="{Binding ComSave}" BackgroundColor="#CA2F94" ></Button>
+
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

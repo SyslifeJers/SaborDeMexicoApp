@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:model="clr-namespace:SaborDeMexico.Models"
+             xmlns:local="clr-namespace:SaborDeMexico.ViewModels"
+             x:Class="SaborDeMexico.Views.ListaOrdenPage"
+             Title="Mis Ordenes">
+    <StackLayout>
+
+        <RefreshView Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+            <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding ListOrden}"
+                SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10" x:DataType="model:ModelOrden">
+                            <StackLayout Margin="10" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Frame CornerRadius="100" 
+           HeightRequest="80"
+           WidthRequest="80"
+           HorizontalOptions="Center"
+           Padding="0"
+           IsClippedToBounds="True">
+                                    <Image Source="LogoS" 
+           HorizontalOptions="Center"
+           VerticalOptions="Center" />
+                                </Frame>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding id,StringFormat='Orden: {0}'}" 
+                            LineBreakMode="CharacterWrap"
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="20" />
+                                    <Label Text="{Binding Fecha}" 
+                            LineBreakMode="CharacterWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="14" />
+                                    <Label Text="{Binding Total}" 
+                            LineBreakMode="CharacterWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="14" />
+
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ListaOrdenViewModel}}, Path=ItemTapped}"		
+                                CommandParameter="{Binding .}">
+                                        </TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </StackLayout>
+</ContentPage>

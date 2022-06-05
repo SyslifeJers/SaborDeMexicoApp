@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SaborDeMexico.Views.AboutPage"
+             xmlns:vm="clr-namespace:SaborDeMexico.ViewModels" xmlns:model="clr-namespace:SaborDeMexico.Models"
+             Title="{Binding Title}"
+             Shell.PresentationMode="Modal">
+    
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#1c4a3f</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="130" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+
+            <BoxView Grid.ColumnSpan="2" BackgroundColor="{StaticResource Accent}"></BoxView>
+            <StackLayout Grid.Row="0"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Horizontal" Padding="20,5,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                    <ContentView Padding="0,10,0,10" VerticalOptions="Start">
+                        <Image Source="ubic.png" VerticalOptions="Start" HorizontalOptions="StartAndExpand" HeightRequest="30" />
+
+                    </ContentView>
+                    <StackLayout Margin="5,5,0,0">
+                        <Label Text="{Binding Calle, StringFormat='Entraga: {0}'}"  TextColor="White" HorizontalOptions="Start" ></Label>
+                        <StackLayout Orientation="Horizontal">
+                            <Button HeightRequest="35" FontSize="12" BorderColor="White" BorderWidth="1" CornerRadius="10" Text="Cambiar »" FontAttributes="Bold" TextColor="White" HorizontalOptions="Start" Command="{Binding UbicacionCommand}" ></Button>
+                            <Button HeightRequest="30" FontSize="12" BorderColor="White" BorderWidth="1" CornerRadius="10" Text="Recargar »" FontAttributes="Italic" TextColor="White" HorizontalOptions="Start" Command="{Binding ReLoadCommand}" ></Button>
+                        </StackLayout>
+                    </StackLayout>
+
+                </StackLayout>
+            </StackLayout>
+            <ContentView Grid.Row="0" Grid.Column="1"  VerticalOptions="CenterAndExpand" Margin="0,0,20,0">
+                <Image Source="user.png" VerticalOptions="Center" HorizontalOptions="EndAndExpand" HeightRequest="25" />
+
+            </ContentView>
+            <ScrollView Grid.Row="1" Margin="5,0,0,0" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="2" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90"></ColumnDefinition>
+                        <ColumnDefinition Width="90"></ColumnDefinition>
+                        <ColumnDefinition Width="90"></ColumnDefinition>
+                        <ColumnDefinition Width="90"></ColumnDefinition>
+                        <ColumnDefinition Width="90"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image HeightRequest="90" WidthRequest="50" Source="s1" Grid.Row="0" Grid.Column="0"></Image>
+                    <Image HeightRequest="90" WidthRequest="50" Source="s2" Grid.Row="0" Grid.Column="1"></Image>
+                    <Image HeightRequest="90" WidthRequest="50" Source="s3" Grid.Row="0" Grid.Column="2"></Image>
+                    <Image HeightRequest="90" WidthRequest="50" Source="s4" Grid.Row="0" Grid.Column="3"></Image>
+                    <Image HeightRequest="90" WidthRequest="50" Source="s5" Grid.Row="0" Grid.Column="4"></Image>
+                    <Image HeightRequest="90" WidthRequest="50" Source="s6" Grid.Row="0" Grid.Column="5"></Image>
+
+
+
+                </Grid>
+            </ScrollView>
+            <ScrollView Grid.Row="2" Margin="5,0,0,0" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="2" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="c1" Grid.Row="0" Grid.Column="0"></Image>
+                    <Image Source="c2" Grid.Row="0" Grid.Column="1"></Image>
+                    <Image Source="c3" Grid.Row="0" Grid.Column="2"></Image>
+
+
+
+
+                </Grid>
+            </ScrollView>
+            <ScrollView Grid.Row="3" Margin="15,20,15,0" Grid.Column="0" Orientation="Vertical" Grid.ColumnSpan="2" HorizontalOptions="Center" >
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" Margin="10">
+
+                        <Frame CornerRadius="100" HeightRequest="80" WidthRequest="80" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
+                            <Image Source="https://dayandnightautospa.com/img/c1.jpg" Aspect="AspectFill" HorizontalOptions="Center" HeightRequest="180" WidthRequest="180" VerticalOptions="Center" />
+                        </Frame>
+
+                        <Label Text="Quesos" LineBreakMode="CharacterWrap" FontSize="20" HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <Button Grid.Row="0" Grid.Column="0" BorderColor="#eeeeee" BackgroundColor="Transparent"  Margin="5" Command="{Binding LoadItemsCommand}"  CommandParameter="1"></Button>
+
+                    <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" Margin="10">
+
+                        <Frame CornerRadius="100" HeightRequest="80" WidthRequest="80" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
+                            <Image Source="https://dayandnightautospa.com/img/c2.jpg" Aspect="AspectFill" HorizontalOptions="Center" HeightRequest="180" WidthRequest="180" VerticalOptions="Center" />
+                        </Frame>
+
+                        <Label Text="Vinos" LineBreakMode="CharacterWrap" FontSize="20" HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <Button Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent"  Margin="10"  Command="{Binding LoadItemsCommand}"  CommandParameter="2"></Button>
+
+                    <StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" Margin="10">
+
+                        <Frame CornerRadius="100" HeightRequest="80" WidthRequest="80" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
+                            <Image Source="https://dayandnightautospa.com/img/c3.jpg" Aspect="AspectFill" HorizontalOptions="Center" HeightRequest="180" WidthRequest="180" VerticalOptions="Center" />
+                        </Frame>
+
+                        <Label Text="Yogurt" LineBreakMode="CharacterWrap" FontSize="20" HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent"  Margin="10" Command="{Binding LoadItemsCommand}"  CommandParameter="3"></Button>
+
+
+                    <StackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="CenterAndExpand" Margin="10">
+
+                        <Frame CornerRadius="100" HeightRequest="80" WidthRequest="80" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
+                            <Image Source="https://dayandnightautospa.com/img/c4.jpg" Aspect="AspectFill" HorizontalOptions="Center" HeightRequest="180" WidthRequest="180" VerticalOptions="Center" />
+                        </Frame>
+
+                        <Label Text="Dulces" LineBreakMode="CharacterWrap" FontSize="20" HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <Button Grid.Row="1" Grid.Column="0" BackgroundColor="Transparent"  Margin="10" Command="{Binding LoadItemsCommand}"  CommandParameter="4"></Button>
+                </Grid>
+            </ScrollView>
+            <!--<RefreshView x:DataType="vm:AboutViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <CollectionView 
+                ItemsSource="{Binding ListCategorias}"
+                SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10" x:DataType="model:ModelCategorias">
+                                <StackLayout Padding="10" HorizontalOptions="FillAndExpand" Orientation="Horizontal" BackgroundColor="#eeeeee">
+
+                                        <Frame CornerRadius="100" 
+           HeightRequest="80"
+           WidthRequest="80"
+           HorizontalOptions="Center"
+           Padding="0"
+           IsClippedToBounds="True">
+                                        <Image Source="{Binding ImagenModel}" 
+                                               Aspect="AspectFill"
+           HorizontalOptions="Center"           HeightRequest="180"
+           WidthRequest="180"
+           VerticalOptions="Center" />
+                                    </Frame>
+                                   
+                                        <Label Text="{Binding Descripcion}" 
+                            LineBreakMode="CharacterWrap"
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="20" />
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AboutViewModel}}, Path=ItemTapped}"		
+                                CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>
+
+                                </StackLayout>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>-->
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

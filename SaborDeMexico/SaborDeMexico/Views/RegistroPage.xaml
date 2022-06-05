@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:SaborDeMexico.ViewModels"
+             x:Class="SaborDeMexico.Views.RegistroPage">
+    <ContentPage.BindingContext>
+        <vm:RegistroViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <StackLayout Padding="40,20,40,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Image Source="LogoSolo" Margin="20" WidthRequest="150"></Image>
+            <Label Text="Celular" FontSize="12"></Label>
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                <Label Text="+52" VerticalOptions="Center" HorizontalOptions="End"></Label>
+                <Entry Text="{Binding Cel, Mode=TwoWay}" WidthRequest="200" Keyboard="Telephone" Placeholder="222.." VerticalOptions="Center" HorizontalOptions="StartAndExpand" x:Name="Celulatrtxt"></Entry>
+            </StackLayout>
+            <Label Text="Correo" FontSize="12"></Label>
+            <Entry Text="{Binding Email, Mode=TwoWay}" WidthRequest="200" Keyboard="Email" Placeholder="Correo" ></Entry>
+            <Label Text="Nombre" FontSize="12"></Label>
+            <Entry Text="{Binding Name, Mode=TwoWay}" WidthRequest="200" Keyboard="Default" Placeholder="Nombre" ></Entry>
+            <Label Text="Contraseña" FontSize="12"></Label>
+            <Entry Text="{Binding Contrasena, Mode=TwoWay}" WidthRequest="200" IsPassword="True" Placeholder="Contraseña" ></Entry>
+            <Label Text="Confirmar contraseña" FontSize="12"></Label>
+            <Entry Text="{Binding ConfirPass, Mode=TwoWay}" WidthRequest="200" IsPassword="True" Placeholder="Confirmar contraseña" ></Entry>
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                <CheckBox  VerticalOptions="Center" Color="DarkSlateGray" HorizontalOptions="End"></CheckBox>
+                <Label HorizontalOptions="Center"
+       VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Acepte los " />
+                            <Span Text="terminos y condiciones"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ClickCommand}"
+                                          CommandParameter="https://xamarin.com"
+                                          />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+            <StackLayout Margin="0,20,0,20">
+                <Button HorizontalOptions="Center" Command="{Binding GuardarCommand}"  CornerRadius="100" Text="Registrarme" BackgroundColor="DarkSlateGray" ></Button>
+                <Button HorizontalOptions="Center" Margin="0,10,0,0" CornerRadius="100" Text="Ya tengo mi cuenta" BackgroundColor="DarkSlateGray" Command="{Binding RegresarCommand}" ></Button>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:SaborDeMexico.ViewModels" xmlns:model="clr-namespace:SaborDeMexico.Models"
+             x:Class="SaborDeMexico.Views.UbicacionPage">
+    
+    <StackLayout Padding="20">
+        <Label Text="Ingresa tu dirección completa (calle, numero exterior)"
+                               FontSize="16" FontAttributes="Bold"
+                   />
+        <Entry Text="{Binding MiCalle}"></Entry>
+
+        <Label Text="Notas del domicilio"
+                              FontSize="14" 
+                />
+        <Entry Text="{Binding Nota}"></Entry>
+
+        <Label Text="Seleciona la Dirección"
+               FontSize="16" FontAttributes="Bold"
+                />
+        <Label Text="{Binding Mensaje}" 
+               FontSize="12" TextColor="DarkRed" FontAttributes="Bold"
+                />
+        <RefreshView x:DataType="local:UbicacionViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+            <CollectionView x:Name="ItemsListView"
+                 ItemsSource="{Binding CompleteResult}"
+                SelectionMode="None">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10" x:DataType="model:Predicion">
+
+
+
+                            <Label Text="{Binding Description}" 
+                                                                     
+                                              TextColor="DimGray"
+                            LineBreakMode="CharacterWrap"  
+                            FontSize="16" />
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                            
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:UbicacionViewModel}}, Path=ItemTapped}"		
+                                CommandParameter="{Binding .}">
+                                </TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+
+
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </StackLayout>
+
+</ContentPage>

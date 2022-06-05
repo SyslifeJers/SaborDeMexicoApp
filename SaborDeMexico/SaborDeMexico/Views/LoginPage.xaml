@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="SaborDeMexico.Views.LoginPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundImageSource="Recurso1">
+    <ScrollView>
+        <Grid Padding="30,0,30,0" VerticalOptions="StartAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image Source="Logo" Grid.Row="0" WidthRequest="200" Margin="0,50,0,50"></Image>
+
+
+
+            <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <BoxView  HeightRequest="1" Margin="15" Color="Gray" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+                <Label  TextColor="Gray" Text="O" HorizontalOptions="Center" Margin="15" BackgroundColor="WhiteSmoke" />
+                <BoxView  HeightRequest="1" Margin="15" Color="Gray" VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
+            
+            </StackLayout>
+            <StackLayout VerticalOptions="Center" Grid.Row="1">
+                <StackLayout Orientation="Horizontal">
+                    <Label  Text="Correo:" VerticalOptions="Center" HorizontalOptions="End"></Label>
+                    <Entry Text="{Binding Cel, Mode=TwoWay }" Placeholder="..." WidthRequest="220" HorizontalOptions="Center" VerticalOptions="Center" Keyboard="Email" ></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Contraseña" VerticalOptions="Center" HorizontalOptions="End"></Label>
+                <Entry Text="{Binding Pass, Mode=TwoWay }" Placeholder="Contraseña" WidthRequest="160" HorizontalOptions="Center" VerticalOptions="End" IsPassword="True" ></Entry>
+                </StackLayout>
+                <Label Text="{Binding Fake}" IsVisible="{Binding Error}" TextColor="DarkRed" FontSize="14"></Label>
+                <StackLayout Orientation="Vertical" VerticalOptions="Center" IsVisible="{Binding IsBusy}">
+                    <Button Margin="0,10,0,0" HorizontalOptions="Center" VerticalOptions="StartAndExpand"  BackgroundColor="DarkSlateGray" BorderWidth="300" Text="Continuar con Correo" Command="{Binding LoginCommand}"/>
+                    <Button  HorizontalOptions="Center" VerticalOptions="StartAndExpand"  BackgroundColor="DarkSlateGray" BorderWidth="300" Text="Crear una cuenta" Command="{Binding RegistroCommand}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" VerticalOptions="Center" IsVisible="{Binding CounterIsBusy}">
+                    <ActivityIndicator Color="DarkSlateGray" IsRunning="True" />
+                </StackLayout>
+            </StackLayout>
+            <!--
+                        <Button android:Button.UseDefaultPadding="true" android:Button.UseDefaultShadow="true" Grid.Row="3" BackgroundColor="White" BorderColor="Black" TextColor="DarkSlateGray" VerticalOptions="Center" Text="Continuar con Google" />
+            <Image Grid.Row="3" HorizontalOptions="End" WidthRequest="30" Margin="0,0,20,0" Source="https://rotulosmatesanz.com/wp-content/uploads/2017/09/2000px-Google_G_Logo.svg_.png"></Image>
+            <Button Grid.Row="4" BackgroundColor="White" android:Button.UseDefaultPadding="true" android:Button.UseDefaultShadow="true" TextColor="DarkSlateGray" VerticalOptions="Center" Text="Continuar con Facebook" />
+            <Image Grid.Row="4" HorizontalOptions="End" WidthRequest="30" Margin="0,0,20,0" Source="https://logodownload.org/wp-content/uploads/2014/09/facebook-logo-3-1.png"></Image>
+            -->
+
+            
+
+
+        </Grid>
+    </ScrollView>
+</ContentPage>
