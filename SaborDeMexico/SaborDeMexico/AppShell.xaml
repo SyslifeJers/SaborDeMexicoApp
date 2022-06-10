@@ -31,7 +31,6 @@
         <ShellContent Title="Carrito" Icon="yo.png" ContentTemplate="{DataTemplate local:CarritoPage}" />
         <ShellContent Title="Ordenes" Icon="notas.png" ContentTemplate="{DataTemplate local:ListaOrdenPage}" />
         <ShellContent Title="Yo" Icon="yo.png" ContentTemplate="{DataTemplate local:YoPage}" />
-        <ShellContent Title="Salir" Icon="salir.png" Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
     </TabBar>
 
 

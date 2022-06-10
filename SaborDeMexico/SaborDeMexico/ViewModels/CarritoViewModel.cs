@@ -259,9 +259,9 @@ namespace SaborDeMexico.ViewModels
             SelectedItem = null;
         }
 
-        public ICommand ClickCommand => new Command<string>((url) =>
+        public Command ClickCommand => new Command<string>((url) =>
         {
-            Device.OpenUri(new System.Uri(url));
+             Device.OpenUri(new System.Uri(url));
         });
         public async Task LoadItemId()
         {

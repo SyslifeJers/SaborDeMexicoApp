@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" xmlns:local="clr-namespace:SaborDeMexico"
              mc:Ignorable="d"
+                          Shell.NavBarIsVisible="False"
              NavigationPage.HasNavigationBar="False"
              x:Class="SaborDeMexico.Views.LoginPage"
-             Shell.NavBarIsVisible="False"
+
              BackgroundImageSource="Recurso1">
     <ScrollView>
         <Grid Padding="30,0,30,0" VerticalOptions="StartAndExpand">
@@ -35,11 +36,23 @@
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Contraseña" VerticalOptions="Center" HorizontalOptions="End"></Label>
-                <Entry Text="{Binding Pass, Mode=TwoWay }" Placeholder="Contraseña" WidthRequest="160" HorizontalOptions="Center" VerticalOptions="End" IsPassword="True" ></Entry>
+                    <Entry Text="{Binding Pass, Mode=TwoWay }"  IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger}, Path=HidePassword}" Placeholder="Contraseña" WidthRequest="160" HorizontalOptions="Center" VerticalOptions="End" ></Entry>
+                    <ImageButton VerticalOptions="Center"
+               HeightRequest="20"
+               HorizontalOptions="End"
+               Source="ic_eye_hide">
+                        <ImageButton.Triggers>
+                            <EventTrigger Event="Clicked">
+                                <local:ShowPasswordTriggerAction ShowIcon="ic_eye"
+                                                              HideIcon="ic_eye_hide"
+                                                              x:Name="ShowPasswordActualTrigger"/>
+                            </EventTrigger>
+                        </ImageButton.Triggers>
+                    </ImageButton>
                 </StackLayout>
                 <Label Text="{Binding Fake}" IsVisible="{Binding Error}" TextColor="DarkRed" FontSize="14"></Label>
                 <StackLayout Orientation="Vertical" VerticalOptions="Center" IsVisible="{Binding IsBusy}">
-                    <Button Margin="0,10,0,0" HorizontalOptions="Center" VerticalOptions="StartAndExpand"  BackgroundColor="DarkSlateGray" BorderWidth="300" Text="Continuar con Correo" Command="{Binding LoginCommand}"/>
+                    <Button Margin="0,10,0,0" HorizontalOptions="Center" VerticalOptions="StartAndExpand"  BackgroundColor="DarkSlateGray" BorderWidth="300" Text="Iniciar Sesión" Command="{Binding LoginCommand}"/>
                     <Button  HorizontalOptions="Center" VerticalOptions="StartAndExpand"  BackgroundColor="DarkSlateGray" BorderWidth="300" Text="Crear una cuenta" Command="{Binding RegistroCommand}"/>
                 </StackLayout>
 

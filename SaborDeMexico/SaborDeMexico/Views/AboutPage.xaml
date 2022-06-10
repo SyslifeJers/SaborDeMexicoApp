@@ -38,7 +38,7 @@
 
                     </ContentView>
                     <StackLayout Margin="5,5,0,0">
-                        <Label Text="{Binding Calle, StringFormat='Entraga: {0}'}"  TextColor="White" HorizontalOptions="Start" ></Label>
+                        <Label Text="{Binding Calle, StringFormat='Entrega: {0}'}"  TextColor="White" HorizontalOptions="Start" ></Label>
                         <StackLayout Orientation="Horizontal">
                             <Button HeightRequest="35" FontSize="12" BorderColor="White" BorderWidth="1" CornerRadius="10" Text="Cambiar »" FontAttributes="Bold" TextColor="White" HorizontalOptions="Start" Command="{Binding UbicacionCommand}" ></Button>
                             <Button HeightRequest="30" FontSize="12" BorderColor="White" BorderWidth="1" CornerRadius="10" Text="Recargar »" FontAttributes="Italic" TextColor="White" HorizontalOptions="Start" Command="{Binding ReLoadCommand}" ></Button>
@@ -65,12 +65,9 @@
                     </Grid.ColumnDefinitions>
                     <Image HeightRequest="90" WidthRequest="50" Source="s1" Grid.Row="0" Grid.Column="0"></Image>
                     <Image HeightRequest="90" WidthRequest="50" Source="s2" Grid.Row="0" Grid.Column="1"></Image>
-                    <Image HeightRequest="90" WidthRequest="50" Source="s3" Grid.Row="0" Grid.Column="2"></Image>
-                    <Image HeightRequest="90" WidthRequest="50" Source="s4" Grid.Row="0" Grid.Column="3"></Image>
-                    <Image HeightRequest="90" WidthRequest="50" Source="s5" Grid.Row="0" Grid.Column="4"></Image>
-                    <Image HeightRequest="90" WidthRequest="50" Source="s6" Grid.Row="0" Grid.Column="5"></Image>
-
-
+                    <ImageButton Command="{Binding CommandLink}" CommandParameter="3"  HeightRequest="90" WidthRequest="50" Source="s3" Grid.Row="0" Grid.Column="2"></ImageButton>
+                    <ImageButton Command="{Binding CommandLink}" CommandParameter="4"  HeightRequest="90" WidthRequest="50" Source="s4" Grid.Row="0" Grid.Column="3"></ImageButton>
+                    <ImageButton Command="{Binding CommandLink}" CommandParameter="5"  HeightRequest="90" WidthRequest="50" Source="s5" Grid.Row="0" Grid.Column="4"></ImageButton>
 
                 </Grid>
             </ScrollView>
@@ -85,8 +82,8 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <Image Source="c1" Grid.Row="0" Grid.Column="0"></Image>
-                    <Image Source="c2" Grid.Row="0" Grid.Column="1"></Image>
+
+                    <ImageButton Command="{Binding CommandLink}" CommandParameter="p1" Source="c2" Grid.Row="0" Grid.Column="1" ></ImageButton>
                     <Image Source="c3" Grid.Row="0" Grid.Column="2"></Image>
 
 

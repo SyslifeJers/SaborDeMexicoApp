@@ -73,6 +73,7 @@ namespace SaborDeMexico.ViewModels
         public Command<string> LoadItemsCommand { get; }
         public Command UbicacionCommand { get; }
         public Command<ModelCategorias> ItemTapped { get; }
+        public Command<string> CommandLink { get; }
         public ModelCategorias SelectedItem
         {
             get => _selectedItem;
@@ -156,10 +157,44 @@ namespace SaborDeMexico.ViewModels
             ListCategorias = new ObservableCollection<ModelCategorias>();
             LoadItemsCommand = new Command<string>(OnItemSelected);
             UbicacionCommand = new Command(CambiarUbi);
+            CommandLink = new Command<string>(RunLink);
             ReLoadCommand = new Command(async () => await Load());
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
             Load();
         }
+
+        private async void RunLink(string obj)
+        {
+            switch (obj)
+            {
+                case "1":
+
+                    break;
+                case "2":
+
+                    break;
+                case "3":
+                    await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={3}");
+                    break;
+                case "4":
+                    await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={1}");
+                    break;
+                case "5":
+                    await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={1}");
+                    break;
+                    
+                case "p1":
+                    await Browser.OpenAsync("https://www.facebook.com/SabordeMx");
+                    break;                    
+                case "p2":
+                  
+                    break;                    
+
+                default:
+                    break;
+            }
+        }
+
         public void ExecuteLoadItemsCommand(string da)
         {
             IsBusy = true;

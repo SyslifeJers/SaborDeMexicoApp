@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:SaborDeMexico.ViewModels" xmlns:model="clr-namespace:SaborDeMexico.Models"
-             x:Class="SaborDeMexico.Views.DetalleProductoPage">
+             x:Class="SaborDeMexico.Views.DetalleProductoPage"
+             Title="{Binding Nombre}"
+             >
 
     <ContentPage.BindingContext>
         <vm:DetalleDeProductoViewModel />
@@ -43,12 +45,14 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                 <StackLayout Orientation="Vertical" Margin="15,0,0,0" HorizontalOptions="StartAndExpand">
-                    <Label Text="Presentación:"
+                    <Label Text="Selecciona el Tamaño:"
                 VerticalOptions="Start" 
                 HorizontalOptions="Start"
                        FontSize="18"
                            FontAttributes="Bold"/>
-                    <Picker ItemsSource="{Binding GetProductos}"
+                    <Picker
+                        BackgroundColor="LightGray"
+                         ItemsSource="{Binding GetProductos}"
         ItemDisplayBinding="{Binding Precentacion}"
                         HorizontalOptions="Center" WidthRequest="120"
                         SelectedItem="{Binding SelectedCity}"	

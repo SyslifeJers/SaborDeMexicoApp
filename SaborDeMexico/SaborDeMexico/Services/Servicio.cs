@@ -433,6 +433,37 @@ namespace SaborDeMexico.Services
 
             }
         }
+        public async Task<ModelYo> GetInformacionUsuario(string Token)
+        {
+
+            try
+            {
+
+                var json = JsonConvert.SerializeObject(new ModelUsuario() { Token = Token });
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var uri = new Uri($"{APIUri}/Clientes/Datos");
+                var response = await ProcessPostAsync(uri, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var contentR = await response.Content.ReadAsStringAsync();
+                    var model3 = JsonConvert.DeserializeObject<ModelYo>(contentR);
+
+                        return model3;
+                   
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception e)
+            {
+                var sm = e.Message;
+                return null;
+
+            }
+        }
         public async Task<ModelUbicacion> AltaUbicaAsync(ModelUbicacion model)
         {
             try

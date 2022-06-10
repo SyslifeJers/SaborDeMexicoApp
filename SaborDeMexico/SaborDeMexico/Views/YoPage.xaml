@@ -1,12 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SaborDeMexico.Views.YoPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:SaborDeMexico.ViewModels" xmlns:magic="http://magic.com/schemas/gradients"
+             x:Class="SaborDeMexico.Views.YoPage"
+             Title="Mi cuenta"
+             >
+    <ContentPage.BindingContext>
+        <vm:YoViewModel />
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Image Source="https://cdn-icons-png.flaticon.com/512/1584/1584961.png"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <magic:GradientView  Grid.Row="0"  >
+
+                <magic:CssGradientSource>
+                    <x:String>
+                        <![CDATA[
+         linear-gradient(158deg, rgba(253, 253, 253, 0.03) 0%, rgba(253, 253, 253, 0.03) 50%,rgba(64, 64, 64, 0.03) 50%, rgba(64, 64, 64, 0.03) 100%),linear-gradient(77deg, rgba(39, 39, 39, 0.01) 0%, rgba(39, 39, 39, 0.01) 50%,rgba(91, 91, 91, 0.01) 50%, rgba(91, 91, 91, 0.01) 100%),linear-gradient(311deg, rgba(19, 19, 19, 0.03) 0%, rgba(19, 19, 19, 0.03) 50%,rgba(214, 214, 214, 0.03) 50%, rgba(214, 214, 214, 0.03) 100%),linear-gradient(233deg, rgba(250, 250, 250, 0.03) 0%, rgba(250, 250, 250, 0.03) 50%,rgba(118, 118, 118, 0.03) 50%, rgba(118, 118, 118, 0.03) 100%),linear-gradient(227deg, rgba(216, 216, 216, 0.02) 0%, rgba(216, 216, 216, 0.02) 50%,rgba(69, 69, 69, 0.02) 50%, rgba(69, 69, 69, 0.02) 100%),linear-gradient(151deg, rgba(205, 205, 205, 0.02) 0%, rgba(205, 205, 205, 0.02) 50%,rgba(20, 20, 20, 0.02) 50%, rgba(20, 20, 20, 0.02) 100%),linear-gradient(7deg, rgba(169, 169, 169, 0.02) 0%, rgba(169, 169, 169, 0.02) 50%,rgba(231, 231, 231, 0.02) 50%, rgba(231, 231, 231, 0.02) 100%),linear-gradient(244deg, rgba(204, 204, 204, 0.01) 0%, rgba(204, 204, 204, 0.01) 50%,rgba(200, 200, 200, 0.01) 50%, rgba(200, 200, 200, 0.01) 100%),linear-gradient(90deg, rgb(37, 116, 27),rgb(185, 232, 75))
+            ]]>
+                    </x:String>
+                </magic:CssGradientSource>
+            </magic:GradientView>
+            <magic:GradientView Margin="10,40,10,10" Grid.Row="0" HeightRequest="400" TranslationY="55" >
+                <magic:GradientView.Mask>
+                    <magic:RectangleMask Size="95%" Corners="10,10,10,10" />
+                </magic:GradientView.Mask>
+                <magic:CssGradientSource>
+                    <x:String>
+                        <![CDATA[
+repeating-linear-gradient(90deg, hsla(298,16%,68%,0.06) 0px, hsla(298,16%,68%,0.06) 1px,transparent 1px, transparent 21px,hsla(298,16%,68%,0.06) 21px, hsla(298,16%,68%,0.06) 22px,transparent 22px, transparent 72px),repeating-linear-gradient(0deg, hsla(298,16%,68%,0.06) 0px, hsla(298,16%,68%,0.06) 1px,transparent 1px, transparent 21px,hsla(298,16%,68%,0.06) 21px, hsla(298,16%,68%,0.06) 22px,transparent 22px, transparent 72px),repeating-linear-gradient(135deg, hsla(298,16%,68%,0.06) 0px, hsla(298,16%,68%,0.06) 1px,transparent 1px, transparent 21px,hsla(298,16%,68%,0.06) 21px, hsla(298,16%,68%,0.06) 22px,transparent 22px, transparent 72px),linear-gradient(90deg, hsl(275,3%,97%),hsl(275,3%,97%))
+            ]]>
+                    </x:String>
+                </magic:CssGradientSource>
+            </magic:GradientView>
+            <StackLayout Grid.Row="0" Padding="40">
+                <Image Source="Logo"></Image>
+                <StackLayout>
+                    <Label Text="{Binding Name, StringFormat='Nombre: {0}'}"></Label>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="{Binding Correo, StringFormat='Correo: {0}'}"></Label>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="{Binding Num, StringFormat='Telefono: {0}'}"></Label>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="{Binding Calle, StringFormat='Dirección: {0}'}"></Label>
+                </StackLayout>
+                <StackLayout Padding="20">
+                    <Button Text="Cerrar sessión"
+                    Command="{Binding SalirCommand}"
+                                HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

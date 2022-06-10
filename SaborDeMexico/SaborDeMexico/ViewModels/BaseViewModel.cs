@@ -47,6 +47,8 @@ namespace SaborDeMexico.ViewModels
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+
         #endregion
     }
 }
