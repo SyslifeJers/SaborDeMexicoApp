@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace SaborDeMexico.ViewModels
@@ -12,6 +13,17 @@ namespace SaborDeMexico.ViewModels
     [QueryProperty(nameof(IdOrden), nameof(IdOrden))]
     public class OrdenViewModel : BaseViewModel
     {
+        private bool botonC;
+
+        public bool BotonC
+        {
+            get { return botonC; }
+            set { botonC = value;
+                OnPropertyChanged();
+
+            }
+        }
+
         public string IdOrden
         {
             get
@@ -25,6 +37,17 @@ namespace SaborDeMexico.ViewModels
                 LoadItemId();
             }
         }
+        private string error;
+
+        public string Error
+        {
+            get { return error; }
+            set
+            {
+                error = value;
+                OnPropertyChanged();
+            }
+        }
         private Servicio getServicio;
 
         public ObservableCollection<ModelDetalleOrden> ListCarritos { get; }
@@ -35,6 +58,40 @@ namespace SaborDeMexico.ViewModels
             ListCarritos = new ObservableCollection<ModelDetalleOrden>();
             Estatus = "";
             BackCommand = new Command(Back);
+            CancelarPedidoCommand = new Command(CancelarAsync);
+        }
+
+        private bool Validar()
+        {
+            if (EstatusId == 0)
+                return true;
+            else
+                return false;
+        }
+
+        async void CancelarAsync(object obj)
+        {
+            var oauthToken = await SecureStorage.GetAsync("oauth_token");
+            //mandar a llamar el servico de generar orden
+            ModelGOrden model = await getServicio.CanOrden(new ModelGOrden() { Token = oauthToken, idOrden = Convert.ToInt32(IdOrden) });
+
+            if (model != null)
+            {
+                if (model.Respuesta)
+                {
+                    Estatus = "Pedido Cancelado";
+                    EstatusId = -1;
+                }
+                else
+                {
+                    Error = model.Nota;
+                }
+
+            }
+            else
+            {
+                Error = "Problemas en la nube";
+            }
         }
 
         private async void Back(object obj)
@@ -56,6 +113,17 @@ namespace SaborDeMexico.ViewModels
             }
 
         }
+        private int estatusId;
+
+        public int EstatusId
+        {
+            get { return estatusId; }
+            set { estatusId = value;
+                OnPropertyChanged();
+                BotonC = Validar();
+            }
+        }
+
         private decimal total;
 
         public decimal Total
@@ -79,6 +147,7 @@ namespace SaborDeMexico.ViewModels
 
 
         public Command BackCommand { get; }
+        public Command CancelarPedidoCommand { get; }
 
         private async Task LoadItemId()
         {
@@ -90,6 +159,7 @@ namespace SaborDeMexico.ViewModels
                 ListCarritos.Add(item);
             }
             Estatus = EstatusG(list[0].Estatus);
+            EstatusId = list[0].Estatus;
             try
             {
                 Total = Convert.ToDecimal(list[0].Total) + Convert.ToDecimal(list[0].Envio);
@@ -107,9 +177,9 @@ namespace SaborDeMexico.ViewModels
             switch (id)
             {
                 case -1:
-                    return "Cancelado por Adminitración";
+                    return "Pedido Cancelado";
                 case 0:
-                    return "Pedido en espera de pago";
+                    return "Su pedido fue registrado exitosamente y sera enviado en nuestra proxima ruta";
                 case 1:
                     return "Ya estamos preparando tu orden";
                 case 2:

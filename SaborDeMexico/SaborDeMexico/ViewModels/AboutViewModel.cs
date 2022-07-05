@@ -72,6 +72,7 @@ namespace SaborDeMexico.ViewModels
         public Command ReLoadCommand { get; }
         public Command<string> LoadItemsCommand { get; }
         public Command UbicacionCommand { get; }
+        public Command MapsCommand { get; }
         public Command<ModelCategorias> ItemTapped { get; }
         public Command<string> CommandLink { get; }
         public ModelCategorias SelectedItem
@@ -120,6 +121,24 @@ namespace SaborDeMexico.ViewModels
               //  await Load();
             }
         }       
+        public async void Maps()
+        {
+            // This will push the ItemDetailPage onto the navigation stack
+            try
+            {
+
+                await Shell.Current.GoToAsync($"/{nameof(MapsPage)}");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+              //  await Load();
+            }
+        }       
         public async Task<bool> Load()
         {
 
@@ -137,7 +156,8 @@ namespace SaborDeMexico.ViewModels
                         Calle = ubica.Direccion;
 
                 }
-
+                var toke = Preferences.Get("TokenFirebase","");
+                getServicio.SetDatosTokenNotifi(new ModelUsuario() { CodigoN = toke, Token = oauthToken });
                 return true;
 
             }
@@ -157,6 +177,7 @@ namespace SaborDeMexico.ViewModels
             ListCategorias = new ObservableCollection<ModelCategorias>();
             LoadItemsCommand = new Command<string>(OnItemSelected);
             UbicacionCommand = new Command(CambiarUbi);
+            MapsCommand = new Command(Maps);
             CommandLink = new Command<string>(RunLink);
             ReLoadCommand = new Command(async () => await Load());
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));

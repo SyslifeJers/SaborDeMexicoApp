@@ -12,7 +12,13 @@ namespace SaborDeMexico.ViewModels
     public class YoViewModel: BaseViewModel
     {
         private Servicio getServicio;
+        private string cp;
 
+        public string Cp
+        {
+            get { return cp; }
+            set { cp = value; }
+        }
         private string name;
 
         public string Name
@@ -76,7 +82,7 @@ namespace SaborDeMexico.ViewModels
                 if (ubica != null)
                 {
                     Calle = ubica.Direccion;
-
+                    Cp = ubica.Cp;
                 }
 
                 return true;

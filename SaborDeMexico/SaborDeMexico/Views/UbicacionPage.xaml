@@ -9,11 +9,15 @@
                    />
         <Entry Text="{Binding MiCalle}"></Entry>
 
+        <Label Text="CP"
+                              FontSize="14" 
+                />
+        <Entry  Text="{Binding Cp}" Placeholder="72..."></Entry>
+
         <Label Text="Notas del domicilio"
                               FontSize="14" 
                 />
-        <Entry Text="{Binding Nota}"></Entry>
-
+        <Entry Placeholder="Fachada Amarilla..." Text="{Binding Nota}"></Entry>
         <Label Text="Seleciona la Dirección"
                FontSize="16" FontAttributes="Bold"
                 />

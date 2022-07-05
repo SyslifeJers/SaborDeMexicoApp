@@ -15,6 +15,7 @@ namespace SaborDeMexico.Models
         public string Token { get; set; }
         public int ResgisUbi { get; set; }
         public string CodigoR { get; set; }
+        public string CodigoN { get; set; }
     }
     public class ModelCliente
     {

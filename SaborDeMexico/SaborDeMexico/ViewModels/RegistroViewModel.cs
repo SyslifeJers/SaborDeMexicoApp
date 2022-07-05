@@ -111,7 +111,7 @@ namespace SaborDeMexico.ViewModels
             {
                 bool pasa = true;
                 if (Name.Length < 2) { Fake2 = "Nombre muy corto"; pasa = false; }
-                if (!Regex.IsMatch(Contrasena, @"^[0-9]+$")){ Fake2 = "Contraseña debe tener al menos un número"; pasa = false; }
+                if (Regex.IsMatch(Contrasena, @"^[0-9]+$")){ Fake2 = "Contraseña debe tener al menos un número"; pasa = false; }
                 if (Contrasena.Length < 5) { Fake2 = "Contraseña mayor a 6 caracteres"; pasa = false; }
                 // if (IsValidEmail(Email)) { Fake2 = "Correo no valido"; pasa = false; }
                 if (!Contrasena.Equals(ConfirPass)) { Fake2 = "Las contraseñas no son iguales"; pasa = false; }

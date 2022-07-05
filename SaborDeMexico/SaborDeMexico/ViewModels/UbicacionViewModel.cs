@@ -40,7 +40,15 @@ namespace SaborDeMexico.ViewModels
         {
             get { return nota; }
             set { nota = value; }
-        }    
+        }
+        private string cp;
+
+        public string Cp
+        {
+            get { return cp; }
+            set { cp = value; }
+        }
+
         private string mensaje;
         public string Mensaje
         {
@@ -65,7 +73,7 @@ namespace SaborDeMexico.ViewModels
             {
                 var oauthToken = await SecureStorage.GetAsync("oauth_token");
                 GooglePlace googlePlace = await services.DatosLocationId(value.IdRuta);
-                var dat = await getServicio.AltaUbicaAsync(new ModelUbicacion() { Lat = (decimal)googlePlace.Latitude, Lon = (decimal)googlePlace.Longitude, Direccion = value.Description, Name = value.IdRuta, Token = oauthToken });
+                var dat = await getServicio.AltaUbicaAsync(new ModelUbicacion() { Lat = (decimal)googlePlace.Latitude, Lon = (decimal)googlePlace.Longitude, Direccion = value.Description, Name = value.IdRuta, Token = oauthToken, Cp = Cp });
                 if (dat.Token.Equals("Ok"))
                 {
                     await Shell.Current.GoToAsync("..");

@@ -63,7 +63,7 @@
                         <ColumnDefinition Width="90"></ColumnDefinition>
                         <ColumnDefinition Width="90"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Image HeightRequest="90" WidthRequest="50" Source="s1" Grid.Row="0" Grid.Column="0"></Image>
+                    <ImageButton Command="{Binding MapsCommand}"  HeightRequest="90" WidthRequest="50" Source="s1" Grid.Row="0" Grid.Column="0" ></ImageButton>
                     <Image HeightRequest="90" WidthRequest="50" Source="s2" Grid.Row="0" Grid.Column="1"></Image>
                     <ImageButton Command="{Binding CommandLink}" CommandParameter="3"  HeightRequest="90" WidthRequest="50" Source="s3" Grid.Row="0" Grid.Column="2"></ImageButton>
                     <ImageButton Command="{Binding CommandLink}" CommandParameter="4"  HeightRequest="90" WidthRequest="50" Source="s4" Grid.Row="0" Grid.Column="3"></ImageButton>
@@ -83,11 +83,8 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <ImageButton Command="{Binding CommandLink}" CommandParameter="p1" Source="c2" Grid.Row="0" Grid.Column="1" ></ImageButton>
-                    <Image Source="c3" Grid.Row="0" Grid.Column="2"></Image>
-
-
-
+                    <ImageButton Command="{Binding MapsCommand}" Source="ubicacion" Grid.Row="0" Grid.Column="0" />
+                    <ImageButton Command="{Binding CommandLink}" CommandParameter="p1" Source="c2" Grid.Row="0" Grid.Column="1"/>
 
                 </Grid>
             </ScrollView>

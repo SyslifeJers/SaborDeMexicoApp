@@ -46,6 +46,7 @@ repeating-linear-gradient(90deg, hsla(298,16%,68%,0.06) 0px, hsla(298,16%,68%,0.
 
                 <StackLayout>
                     <Label Text="{Binding Calle, StringFormat='Dirección: {0}'}"></Label>
+                    <Label Text="{Binding Cp, StringFormat='CP: {0}'}"></Label>
                 </StackLayout>
                 <StackLayout Padding="20">
                     <Button Text="Cerrar sessión"

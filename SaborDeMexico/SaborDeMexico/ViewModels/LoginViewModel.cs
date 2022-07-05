@@ -120,7 +120,7 @@ namespace SaborDeMexico.ViewModels
         }
         private async void OnOlvPass(object obj)
         {
-           // await Shell.Current.GoToAsync($"{nameof(CambiarPassPage)}");
+            await Shell.Current.GoToAsync($"//login/{nameof(CambiarPassPage)}");
         }
 
     }

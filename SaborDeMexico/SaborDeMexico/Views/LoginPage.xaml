@@ -50,6 +50,25 @@
                         </ImageButton.Triggers>
                     </ImageButton>
                 </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                    <Label HorizontalOptions="Center"
+       VerticalOptions="End">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Olvidaste tu contraseña, " />
+                                <Span Text="recupérala aquí"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OlvidaPassCommand}"
+                                                  
+                                          />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
                 <Label Text="{Binding Fake}" IsVisible="{Binding Error}" TextColor="DarkRed" FontSize="14"></Label>
                 <StackLayout Orientation="Vertical" VerticalOptions="Center" IsVisible="{Binding IsBusy}">
                     <Button Margin="0,10,0,0" HorizontalOptions="Center" VerticalOptions="StartAndExpand"  BackgroundColor="DarkSlateGray" BorderWidth="300" Text="Iniciar Sesión" Command="{Binding LoginCommand}"/>
