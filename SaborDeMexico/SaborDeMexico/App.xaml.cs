@@ -12,7 +12,7 @@ namespace SaborDeMexico
         public App()
         {
             InitializeComponent();
-
+            DependencyService.Register<ServiosMensajes, MensajeriaView>();
             MainPage = new AppShell();
         }
 

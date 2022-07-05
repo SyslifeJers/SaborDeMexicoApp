@@ -11,6 +11,7 @@ namespace SaborDeMexico
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(MapsPage), typeof(MapsPage));
             Routing.RegisterRoute(nameof(ListaOrdenPage), typeof(ListaOrdenPage));
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(UbicacionPage), typeof(UbicacionPage));
@@ -19,6 +20,7 @@ namespace SaborDeMexico
             Routing.RegisterRoute(nameof(DetalleProductoPage), typeof(DetalleProductoPage));
             Routing.RegisterRoute(nameof(YoPage), typeof(YoPage));
             Routing.RegisterRoute("registration", typeof(RegistroPage));
+            Routing.RegisterRoute(nameof(CambiarPassPage), typeof(CambiarPassPage));
             Application.Current.MainPage = new AboutPage();
         }
         private async void OnMenuItemClicked(object sender, EventArgs e)
