@@ -42,9 +42,12 @@
                     </Label.FormattedText>
                 </Label>
             </StackLayout>
-            <StackLayout Margin="0,20,0,20">
+            <StackLayout IsVisible="{Binding VerMostrar}" Margin="0,20,0,20">
                 <Button HorizontalOptions="Center" Command="{Binding GuardarCommand}"  CornerRadius="100" Text="Registrarme" BackgroundColor="DarkSlateGray" ></Button>
                 <Button HorizontalOptions="Center" Margin="0,10,0,0" CornerRadius="100" Text="Ya tengo mi cuenta" BackgroundColor="DarkSlateGray" Command="{Binding RegresarCommand}" ></Button>
+            </StackLayout>
+            <StackLayout IsVisible="{Binding VerOcultar}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="6">
+                <ActivityIndicator IsVisible="true" IsRunning="True" Color="Green"></ActivityIndicator>
             </StackLayout>
         </StackLayout>
     </ScrollView>

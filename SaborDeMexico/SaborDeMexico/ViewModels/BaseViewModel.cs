@@ -10,7 +10,34 @@ namespace SaborDeMexico.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-               bool isBusy = false;
+        bool verOcultar = false;
+        public bool VerOcultar
+        {
+            get { return verOcultar; }
+            set { SetProperty(ref verOcultar, value); }
+        }
+        bool verMostrar = true;
+        public bool VerMostrar
+        {
+            get { return verMostrar; }
+            set { SetProperty(ref verMostrar, value); }
+        }
+
+        public void Ver()
+        {
+            if (VerOcultar)
+            {
+                VerMostrar = true;
+                VerOcultar = false;
+
+            }
+            else
+            {
+                VerMostrar = false;
+                VerOcultar = true;
+            }
+        }
+        bool isBusy = false;
         public bool IsBusy
         {
             get { return isBusy; }

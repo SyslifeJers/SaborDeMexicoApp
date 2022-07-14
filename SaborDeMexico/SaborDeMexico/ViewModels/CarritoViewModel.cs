@@ -182,34 +182,47 @@ namespace SaborDeMexico.ViewModels
         }
         async void GoViewOrden()
         {
-
-            if (!string.IsNullOrEmpty(Calle))
+            Ver();
+            try
             {
-                if (ListCarritos.Count==0)
-                {
-                    Error = "No hay productos en el carrito";
-                    return;
-                }
-                var oauthToken = await SecureStorage.GetAsync("oauth_token");
-                //mandar a llamar el servico de generar orden
-                ModelGOrden model = await getServicio.GenOrden(new ModelGOrden() { CostoEnvio = CostoEnvio, Nota = Nota, Token = oauthToken });
 
-                if (model != null)
+                if (!string.IsNullOrEmpty(Calle))
                 {
-                    if (model.idOrden != 0)
+                    if (ListCarritos.Count == 0)
                     {
-                        await Shell.Current.GoToAsync($"{nameof(ViewOrdenPage)}?{nameof(OrdenViewModel.IdOrden)}={model.idOrden}");
+                        Error = "No hay productos en el carrito";
+                        return;
                     }
-                    Error = model.Nota;
+                    var oauthToken = await SecureStorage.GetAsync("oauth_token");
+                    //mandar a llamar el servico de generar orden
+                    ModelGOrden model = await getServicio.GenOrden(new ModelGOrden() { CostoEnvio = CostoEnvio, Nota = Nota, Token = oauthToken });
+
+                    if (model != null)
+                    {
+                        if (model.idOrden != 0)
+                        {
+                            await Shell.Current.GoToAsync($"{nameof(ViewOrdenPage)}?{nameof(OrdenViewModel.IdOrden)}={model.idOrden}");
+                        }
+                        Error = model.Nota;
+                    }
+                    else
+                    {
+                        Error = "Problemas en la nube";
+                    }
                 }
                 else
                 {
-                    Error = "Problemas en la nube";
+                    Error = "Por favor regrese al inicio para agregar una dirreción";
                 }
             }
-            else
+            catch (Exception)
             {
-                Error = "Por favor regrese al inicio para agregar una dirreción";
+
+               
+            }
+            finally
+            {
+                Ver();
             }
 
         }

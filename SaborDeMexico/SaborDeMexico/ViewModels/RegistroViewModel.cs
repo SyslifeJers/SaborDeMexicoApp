@@ -106,7 +106,7 @@ namespace SaborDeMexico.ViewModels
 
             IsBusy = false;
             CounterIsBusy = true;
-
+            Ver();
             try
             {
                 bool pasa = true;
@@ -156,6 +156,7 @@ namespace SaborDeMexico.ViewModels
             {
                 IsBusy = true;
                 CounterIsBusy = false;
+                Ver();
             }
             //   await DataStore.AddItemAsync(newItem);
 

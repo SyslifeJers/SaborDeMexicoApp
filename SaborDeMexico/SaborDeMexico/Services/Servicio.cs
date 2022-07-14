@@ -21,6 +21,153 @@ namespace SaborDeMexico.Services
             client.MaxResponseContentBufferSize = 256000;
 
         }
+        public async Task<ModelUsuario> VerificacionCAsync(ModelUsuario model)
+        {
+            try
+            {
+
+                var uri = new Uri($"{APIUri}/Clientes/CVerifi");
+
+                var json = JsonConvert.SerializeObject(model);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await ProcessPostAsync(uri, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var contentR = await response.Content.ReadAsStringAsync();
+                    model = JsonConvert.DeserializeObject<ModelUsuario>(contentR);
+                    return model;
+                }
+                else
+                    return model;
+
+
+            }
+            catch (Exception e)
+            {
+                var sm = e.Message;
+                model.Nombre = "Error de nube";
+                model.Id = -1;
+                return model;
+
+            }
+        }
+        public async Task<ModelUsuario> CambioContraseCAsync(ModelUsuario model)
+        {
+            try
+            {
+
+                var uri = new Uri($"{APIUri}/Clientes/CContra");
+
+                var json = JsonConvert.SerializeObject(model);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await ProcessPostAsync(uri, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var contentR = await response.Content.ReadAsStringAsync();
+                    model = JsonConvert.DeserializeObject<ModelUsuario>(contentR);
+                    return model;
+                }
+                else
+                    return model;
+
+
+            }
+            catch (Exception e)
+            {
+                var sm = e.Message;
+                model.Nombre = "Error de nube";
+                model.Id = -1;
+                return model;
+
+            }
+        }
+        public async Task<ModelUsuario> ReenviarCAsync(ModelUsuario model)
+        {
+            try
+            {
+
+                var uri = new Uri($"{APIUri}/Clientes/Reenviar");
+
+                var json = JsonConvert.SerializeObject(model);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await ProcessPostAsync(uri, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var contentR = await response.Content.ReadAsStringAsync();
+                    model = JsonConvert.DeserializeObject<ModelUsuario>(contentR);
+                    return model;
+                }
+                else
+                    return model;
+
+
+            }
+            catch (Exception e)
+            {
+                var sm = e.Message;
+                model.Nombre = "Error de nube";
+                model.Id = -1;
+                return model;
+
+            }
+        }
+        public async Task<ModelUsuario> GenerarCAsync(ModelUsuario model)
+        {
+            try
+            {
+
+                var uri = new Uri($"{APIUri}/Clientes/GCodigo");
+
+                var json = JsonConvert.SerializeObject(model);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await ProcessPostAsync(uri, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var contentR = await response.Content.ReadAsStringAsync();
+                    model = JsonConvert.DeserializeObject<ModelUsuario>(contentR);
+                    return model;
+                }
+                else
+                    return model;
+
+
+            }
+            catch (Exception e)
+            {
+                var sm = e.Message;
+                model.Nombre = "Error de nube";
+                model.Id = -1;
+                return model;
+
+            }
+        }
+        public async Task<ModelGOrden> CanOrden(ModelGOrden model)
+        {
+            try
+            {
+
+                var json = JsonConvert.SerializeObject(model);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var uri = new Uri($"{APIUri}/Carritoes/CancelarOrden");
+                var response = await ProcessPostAsync(uri, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var contentR = await response.Content.ReadAsStringAsync();
+                    model = JsonConvert.DeserializeObject<ModelGOrden>(contentR);
+                    return model;
+                }
+                else
+                {
+                    return model;
+                }
+            }
+            catch (Exception e)
+            {
+                var sm = e.Message;
+                return null;
+
+            }
+        }
         public async Task<List<ModelOrden>> ListaOrdenAsync(ModelUbicacion modelE)
         {
             try
@@ -48,7 +195,30 @@ namespace SaborDeMexico.Services
 
             }
         }
+        public async Task<List<UbicacionGet>> GetDatosReparto()
+        {
+            List<UbicacionGet> model3 = new List<UbicacionGet>();
+            try
+            {
 
+
+
+                var uri = new Uri($"{APIUri}/Repartidors/");
+                var response = await ProcessGetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var contentR = await response.Content.ReadAsStringAsync();
+                    model3 = JsonConvert.DeserializeObject<List<UbicacionGet>>(contentR);
+                }
+                return model3;
+            }
+            catch (Exception e)
+            {
+                var sm = e.Message;
+                return null;
+
+            }
+        }
         public async Task<List<ModelDetalleOrden>> DevGenOrden(int id)
         {
             try

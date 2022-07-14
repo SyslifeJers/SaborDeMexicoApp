@@ -199,21 +199,34 @@ namespace SaborDeMexico.ViewModels
         }
         private async void OnSave()
         {
-            var oauthToken = await SecureStorage.GetAsync("oauth_token");
-
-            ModelCarrito model = new ModelCarrito()
+            Ver();
+            try
             {
+                var oauthToken = await SecureStorage.GetAsync("oauth_token");
 
-                Cantidad = Cant,
-                IdProducto = Convert.ToInt32(ItemId),
-                IdPresentacion = IdPresentacion,
-                Token = oauthToken
-            };
-            if (await getServicio.AddCarrito(model))
-            {
+                ModelCarrito model = new ModelCarrito()
+                {
 
+                    Cantidad = Cant,
+                    IdProducto = Convert.ToInt32(ItemId),
+                    IdPresentacion = IdPresentacion,
+                    Token = oauthToken
+                };
+                if (await getServicio.AddCarrito(model))
+                {
+
+                }
+                await Shell.Current.GoToAsync("..?ItemId=" + Cate);
             }
-            await Shell.Current.GoToAsync("..?ItemId=" + Cate);
+            catch (Exception)
+            {
+
+               
+            }
+            finally
+            {
+                Ver();
+            }
         }
         public void BajarCant()
         {

@@ -89,10 +89,13 @@
                        FontSize="18"
                            FontAttributes="Bold"/>
             </StackLayout>
-            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+            <StackLayout IsVisible="{Binding VerMostrar}" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
                 <Button HorizontalOptions="CenterAndExpand" Command="{Binding ComBack}" Margin="0,10,10,14" HeightRequest="40" Text="Regresar" TextColor="White" CornerRadius="20" BorderWidth="1"  x:Name="btnCancelar"   BackgroundColor="Gray" WidthRequest="130"></Button>
                 <Button HorizontalOptions="CenterAndExpand"  Margin="0,10,0,14" HeightRequest="40" Text="Agregar al carrito" TextColor="White" CornerRadius="20" BorderWidth="1"  x:Name="btnSolicitar" Command="{Binding ComSave}" BackgroundColor="#CA2F94" ></Button>
 
+            </StackLayout>
+            <StackLayout IsVisible="{Binding VerOcultar}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="6">
+                <ActivityIndicator IsVisible="true" IsRunning="True" Color="Green"></ActivityIndicator>
             </StackLayout>
         </StackLayout>
     </ScrollView>

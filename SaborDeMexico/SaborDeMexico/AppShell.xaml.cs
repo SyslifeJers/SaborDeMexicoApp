@@ -11,6 +11,7 @@ namespace SaborDeMexico
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(MapsPage), typeof(MapsPage));
             Routing.RegisterRoute(nameof(ListaOrdenPage), typeof(ListaOrdenPage));
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(UbicacionPage), typeof(UbicacionPage));

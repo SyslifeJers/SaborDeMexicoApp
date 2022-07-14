@@ -156,8 +156,8 @@ namespace SaborDeMexico.ViewModels
                         Calle = ubica.Direccion;
 
                 }
-                var toke = Preferences.Get("TokenFirebase","");
-                getServicio.SetDatosTokenNotifi(new ModelUsuario() { CodigoN = toke, Token = oauthToken });
+                //var toke = Preferences.Get("TokenFirebase","");
+               // getServicio.SetDatosTokenNotifi(new ModelUsuario() { CodigoN = toke, Token = oauthToken });
                 return true;
 
             }

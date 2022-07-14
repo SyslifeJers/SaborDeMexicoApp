@@ -203,12 +203,14 @@ repeating-linear-gradient(333deg, hsla(119,47%,93%,0.05) 0px, hsla(119,47%,93%,0
                     </Label.FormattedText>
                 </Label>
 
-                <Grid Grid.Row="5" ColumnDefinitions="*,*" Padding="15">
+                <Grid IsVisible="{Binding VerMostrar}" Grid.Row="5" ColumnDefinitions="*,*" Padding="15">
                     <Label Text="{Binding Error}" FontSize="16" TextColor="Black"></Label>
                     <Button Grid.Column="0"  Command="{Binding BackCarrito}" ImageSource="Arrow" Text="Cancelar" TextColor="Black" FontAttributes="Bold" BackgroundColor="#e4e4e4" CornerRadius="10" HeightRequest="50" Margin="10,5,10,20"/>
                     <Button Grid.Column="1" Command="{Binding ComandGoViewOrden}" Text="Pagar" TextColor="White" FontAttributes="Bold" BackgroundColor="Black" CornerRadius="10" Margin="5,5,10,20" HeightRequest="50"/>
                 </Grid>
-
+                <StackLayout IsVisible="{Binding VerOcultar}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="6">
+                    <ActivityIndicator IsVisible="true" IsRunning="True" Color="Green"></ActivityIndicator>
+                </StackLayout>
             </Grid>
         </ScrollView>
 
